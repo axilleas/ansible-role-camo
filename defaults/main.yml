@@ -1,0 +1,43 @@
+---
+# defaults file for ansible-role-camo
+# https://github.com/atmos/camo#configuration
+
+# Camo version https://github.com/atmos/camo/blob/master/package.json#L3
+camo_version: 2.3.0
+
+# The port number Camo should listen on. (default: 8081)
+camo_port: 8081
+
+# The string for Camo to include in the Via and User-Agent headers it sends in
+# requests to origin servers. (default: Camo Asset Proxy <version>)
+camo_header_via: "Camo Asset Proxy {{ camo_version }}"
+
+# The shared key used to generate the HMAC digest, for example using
+# `pwgen -sy 64`, but make sure your key does not contain a backslash
+camo_key:
+
+# The maximum `Content-Length` Camo will proxy. (default: 5242880)
+camo_length_limit: 5242880
+
+# The logging level used for reporting debug or error information. Options are
+# `debug` and `disabled`. (default: `disabled`)
+camo_logging_enabled: 'disabled'
+
+# The maximum number of redirects Camo will follow while fetching an image. (default: 4)
+camo_max_redirects: 4
+
+# The maximum number of seconds Camo will wait before giving up on fetching an
+# image. (default: 10)
+camo_socket_timeout: 10
+
+# The string for Camo to include in the [`Timing-Allow-Origin` header]
+# (http://www.w3.org/TR/resource-timing/#cross-origin-resources) it sends in
+# responses to clients. The header is omitted if this environment variable is
+# not set. (default: not set)
+camo_time_allowing_origin:
+
+# The `Camo-Host` header value that Camo will send. (default: `unknown`)
+camo_hostname: 'uknown'
+
+# Whether or not to enable keep-alive session. (default: `false`)
+camo_keep_alive: false

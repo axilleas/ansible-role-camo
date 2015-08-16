@@ -1,0 +1,33 @@
+---
+# tasks file for camo
+- name: Install nodejs
+  apt: name={{ item }} state=present
+  with_items:
+    - nodejs
+    - npm
+
+- name: Clone camo app
+  git:
+    dest: "{{ camo_path }}"
+    repo: https://github.com/atmos/camo.git
+    accept_hostkey: yes
+    force: yes
+
+- name: Install npm packages
+  npm: path={{ camo_path}} state=present
+
+- name: Copy config templates
+  template:
+    src: camo.env.j2,
+    dest: "{{ camo_path }}/camo.env"
+
+- name: Copy systemd service
+  template:
+    src: camo.service.j2
+    dest: /etc/systemd/system/camo.service
+  notify:
+    - reload systemd
+    - restart camo
+
+- name: Enable camo service
+  service: name=camo state=started enabled=yes

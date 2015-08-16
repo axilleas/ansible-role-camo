@@ -1,0 +1,19 @@
+## {{ ansible_managed }}
+[Unit]
+Description=Camo web service on node.js
+Documentation=https://github.com/atmos/camo
+Wants=local-fs.target network.target
+After=local-fs.target network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory={{ camo_path }}
+EnvironmentFile=-{{ camo_path }}/camo.env
+ExecStart=/usr/bin/nodejs {{ camo_path }}/api/server.js
+KillMode=process
+Restart=on-success
+PrivateTmp=true
+StandardOutput=syslog

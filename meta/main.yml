@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  author: Achilleas Pipinellis
+  description: Camo nodejs app for systemd platforms
+  license: "license (MIT)"
+  min_ansible_version: 1.8
+  platforms:
+  - name: EL
+    versions:
+    - 7
+  - name: Fedora
+    versions:
+    - 20
+    - 21
+    - 22
+  - name: Debian
+    versions:
+    - jessie
+  categories:
+  - cloud
+  - web
