@@ -1,7 +1,7 @@
 ---
 # tasks file for camo
 - name: Install nodejs
-  apt: name={{ item }} state=present
+  yum: name={{ item }} state=present
   with_items:
     - nodejs
     - npm
