@@ -17,6 +17,8 @@ Camo recieves user defined settings with environmental variables as seen in
 default values in `defaults/main.yml` which are then loaded via the template
 `camo.env.j2` in systemd service.
 
+The only required variable is `camo_key`.
+
 Example Playbook
 ----------------
 
